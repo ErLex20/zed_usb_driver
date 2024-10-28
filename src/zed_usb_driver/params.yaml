@@ -1,0 +1,158 @@
+header_include_path: zed_usb_driver/zed_usb_driver.hpp
+namespace: ZEDUsbDriver
+node_class_name: CameraDriverNode
+
+params:
+  autostart:
+    type: bool
+    default_value: false
+    description: "Start the camera driver on node initialization."
+    constraints: ""
+    read_only: true
+
+  base_topic_name:
+    type: string
+    default_value: camera
+    description: "Base topic name for the camera node."
+    constraints: "Must be a valid ROS topic name."
+    read_only: true
+
+  best_effort_qos:
+    type: bool
+    default_value: false
+    description: "Use best effort QoS for image topics."
+    constraints: ""
+    read_only: true
+
+  brightness:
+    type: double
+    default_value: 0.0
+    min_value: -1000.0
+    max_value: 1000.0
+    step: 0.0
+    description: "Brightness setting for the camera."
+    constraints: "Camera-dependent, 0.0 means 'auto'."
+    read_only: false
+    validator: validate_brightness
+
+  camera_calibration_file:
+    type: string
+    default_value: ""
+    description: "Camera calibration file URL."
+    constraints: "Must be a valid file URL."
+    read_only: true
+
+  camera_calibration_rect:
+    type: string
+    default_value: ""
+    description: "Camera internal calibration file."
+    constraints: "Must be a valid ZED conf file."
+    read_only: true
+
+  camera_device_file:
+    type: string
+    default_value: ""
+    description: "Camera device file name."
+    constraints: "Must be a valid device file full path, overrides camera_id if specified."
+    read_only: true
+
+  camera_id:
+    type: integer
+    default_value: 0
+    min_value: 0
+    max_value: 9223372036854775807
+    step: 1
+    description: "Camera device ID."
+    constraints: "Must be a valid camera ID."
+    read_only: true
+
+  camera_name:
+    type: string
+    default_value: "camera"
+    description: "Camera name in the configuration file."
+    constraints: ""
+    read_only: true
+
+  exposure:
+    type: double
+    default_value: 0.0
+    min_value: -1000.0
+    max_value: 1000.0
+    step: 0.0
+    description: "Exposure setting for the camera."
+    constraints: "Camera-dependent, 0.0 means 'auto'."
+    read_only: false
+    validator: validate_exposure
+
+  fps:
+    type: integer
+    default_value: 20
+    min_value: 1
+    max_value: 9223372036854775807
+    step: 1
+    description: "Camera frame rate."
+    constraints: "Changes require camera restart, camera-dependent, so even if the hardware doesn't support the requested frame rate, the driver will observe it with timed sampling."
+    read_only: false
+    var_name: fps_
+
+  frame_id:
+    type: string
+    default_value: "map"
+    description: "Camera frame ID."
+    constraints: "Make sure that a TF frame with this name exists."
+    read_only: false
+    var_name: frame_id_
+
+  image_height:
+    type: integer
+    default_value: 480
+    min_value: 1
+    max_value: 9223372036854775807
+    step: 1
+    description: "Image height."
+    constraints: "Changes require camera restart."
+    read_only: false
+    var_name: image_height_
+
+  image_width:
+    type: integer
+    default_value: 640
+    min_value: 1
+    max_value: 9223372036854775807
+    step: 1
+    description: "Image width."
+    constraints: "Changes require camera restart."
+    read_only: false
+    var_name: image_width_
+
+  publisher_depth:
+    type: integer
+    default_value: 5
+    min_value: 1
+    max_value: 100
+    step: 1
+    description: "Depth of the image publisher queue."
+    constraints: ""
+    read_only: true
+
+  rotation:
+    type: integer
+    default_value: 0
+    min_value: -180
+    max_value: 180
+    step: 90
+    description: "Image rotation angle [deg]."
+    constraints: "Intended as last image processing step, must be a multiple of 90°."
+    read_only: true
+    var_name: rotation_
+
+  wb_temperature:
+    type: double
+    default_value: 0.0
+    min_value: -1000.0
+    max_value: 1000.0
+    step: 0.0
+    description: "White balance color temperature setting for the camera."
+    constraints: "Camera-dependent, 0.0 means 'auto'."
+    read_only: false
+    validator: validate_wb_temperature

@@ -1,0 +1,30 @@
+/usb_camera/zed_usb_driver:
+  ros__parameters:
+    autostart: true
+    base_topic_name: camera
+    best_effort_qos: false
+    brightness: 0.0
+    camera_calibration_file: file:///home/neo/workspace/src/zed_usb_driver/config/camera.yaml
+    camera_calibration_rect: file:///home/neo/workspace/src/zed_usb_driver/config/mini.conf
+    camera_id: 0
+    camera_device_file: /dev/video4
+    camera_name: camera
+    exposure: 0.0
+    fps: 15
+    frame_id: map
+    image_height: 376
+    image_width: 672
+    publisher_depth: 5
+    rotation: 0
+    wb_temperature: 0.0
+    # image_transport parameters
+    zed_usb_driver:
+      camera:
+        image_color:
+          format: jpeg
+          jpeg_quality: 95
+          png_level: 3
+        image_rect_color:
+          format: jpeg
+          jpeg_quality: 95
+          png_level: 3
