@@ -1,2 +1,3 @@
-# zed_usb_driver
-ROS2-based driver for Stereo Camera Stereolabs ZED Mini
+# ZED USB Driver
+
+ZED Mini USB Driver based on [Robot Operating System 2](https://docs.ros.org/en/humble/index.html) robotics middleware.
